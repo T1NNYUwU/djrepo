@@ -109,10 +109,8 @@ media/
 *.pid
 
 # Ignore Django Migrations in Development if you are working on team
-uv.lock
 
 # Only for Development only
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
-pgdata

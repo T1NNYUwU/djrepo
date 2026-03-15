@@ -3,9 +3,31 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Q
 from django.contrib import messages
 from django.contrib.auth.models import User
+from rest_framework import viewsets
 from main.models import Resume, Rating, Skill, Education, PreviousJob, Company
 from main.forms import ResumeForm, SkillForm, EducationForm, PreviousJobForm
 from main.utils import generate_fake_resumes
+from main.serializers import ResumeSerializer, PreviousJobSerializer, EducationSerializer, SkillSerializer
+
+
+class ResumeViewSet(viewsets.ModelViewSet):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+
+
+class PreviousJobViewSet(viewsets.ModelViewSet):
+    queryset = PreviousJob.objects.all()
+    serializer_class = PreviousJobSerializer
+
+
+class EducationViewSet(viewsets.ModelViewSet):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+
+
+class SkillViewSet(viewsets.ModelViewSet):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer
 
 def landing_page(request):
     query = request.GET.get('q', '').strip()
