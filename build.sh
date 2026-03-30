@@ -3,6 +3,8 @@
 # Exit on error
 set -o errexit
 # ติดตั้ง Dependencies
+export PYTHONPATH=$PYTHONPATH:$(pwd)/backend
+
 pip install -r requirements.txt
 # รวบรวม Static Files (CSS, JS, Images)
 python manage.py collectstatic --no-input
